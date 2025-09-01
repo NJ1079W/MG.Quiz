@@ -2,7 +2,7 @@
 # Mozgames: Flag Quiz
 
 Mozgames is a simple and fun flag quiz game. Test your knowledge of world flags and see how many you can recognize!
--Link: https://nj1079w.github.io/MG.Quiz/
+ https://nj1079w.github.io/MG.Quiz/
 
 ## Features
 
