@@ -1,0 +1,27 @@
+// Helper function to load existing scores
+function loadLeaderboard() {
+  const data = localStorage.getItem('flagQuizLeaderboard');
+  return data ? JSON.parse(data) : [];
+}
+
+// Helper to save leaderboard
+function saveLeaderboard(board) {
+  localStorage.setItem('flagQuizLeaderboard', JSON.stringify(board));
+}
+
+// Add a new entry
+function addToLeaderboard(name, score) {
+  const board = loadLeaderboard();
+  board.push({ name, score, date: new Date().toLocaleString() });
+  board.sort((a, b) => b.score - a.score);
+  saveLeaderboard(board.slice(0, 10));  // keep top 10
+}
+
+// Render leaderboard to a given container element
+function renderLeaderboard(containerId) {
+  const board = loadLeaderboard();
+  const container = document.getElementById(containerId);
+  container.innerHTML = '<h3>Leaderboard</h3>' + board
+    .map((e, i) => `<div>${i + 1}. ${e.name} — ${e.score} pts (${e.date})</div>`)
+    .join('');
+}
